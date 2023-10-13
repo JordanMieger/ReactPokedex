@@ -32,18 +32,15 @@ const pokemonList = [
 
 function App() {
   
-const [pokemonIndex, setPokemonIndex] = useState(0)
+const [myPokemon, setMyPokemon] = useState(0)
 
-const nextPokemon = () => {
-  setPokemonIndex(pokemonIndex + 1)
-}
-const previousPokemon = () => {
-  setPokemonIndex(pokemonIndex -1)
-}
+  function indexPokemon(index){
+    setMyPokemon(index);
+  }
   return (
     <div>
-      <Button pokemonIndex={pokemonIndex} pokemonList={pokemonList} next={nextPokemon} previous={previousPokemon}/>
-      <PokemonCard pokemon={pokemonList[pokemonIndex]}/>
+      <Button pokemonList={pokemonList} setMyPokemon={indexPokemon}/>
+      <PokemonCard pokemon={pokemonList[myPokemon]}/>
     </div>
   );
 }

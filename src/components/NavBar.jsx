@@ -1,8 +1,15 @@
-function Button({next, previous, pokemonIndex, pokemonList}) {
+import PokemonCard from "./PokemonCards"
+import {useState} from "react";
+
+function Button({pokemonList, setMyPokemon}) {
     return (
         <>
-            {pokemonIndex > 0 ? (<button onClick={previous}>Précédent</button>) : ""}
-            {pokemonIndex < pokemonList.length - 1 ? (<button onClick={next}>Suivant</button>) : ""}
+            {pokemonList.map((pokemon, index) => (
+                <button key={pokemon.name} onClick={() => setMyPokemon(index)}>
+                    {pokemon.name}
+                </button>
+
+            ))}
         </>
     )
 }
